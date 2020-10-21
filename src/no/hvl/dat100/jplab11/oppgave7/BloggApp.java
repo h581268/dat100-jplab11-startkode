@@ -21,7 +21,7 @@ public class BloggApp {
 				"Harald, hva er status for den siste obligatoriske innleveringen?");
 		Bilde innlegg2 = new Bilde(2, "Harald", "24-10-2020",
 				"Ser bra ut! - har lagt ved output-eksempel fra enhetstester",
-				"https://cdn1.bbcode0.com/uploads/2020/10/20/bbaeb2bf000360b087cd5f62a9967d12-full.png");
+				"https://cdn1.bbcode0.com/uploads/2020/10/20/bbaeb2bf000360b087cd5f62a9967d12-full.png?__cf_chl_jschl_tk__=afabfd9388a40f4b1b951fc86cbf729b4ac9ec40-1603323752-0-AfjnRb7I6Rk1jiFtm3ipYJubuGYAwBmRJqlLV0L79EDEvyVoNwluv9rKL29E6j9-BpiH-xWf6WyGXrjV9Qt2sTuPzeLSRsk7wGVHicBQ7YbWdR5DQiZvY5Fur7tDursEVbHLnM2ECQ2Ha3nCU3rFkGSoxLSm2dYUnvIIcOGs8CzZ_w8P5iGxIKsDyhpJMPMwVqVPq-LGuY7LSipXO9ktEuOjrpnK2Qta3491jyEzoKZHckyHi3EXKKvSubLd4SCYzXRNJwOx3dGas4PMVyT2BWUCdZ1qnZ4cRe76PRj-wQLK3daSEalXunOzvDu8IhzHO8IwUBJBwWSk1iYyZwvo7cFnsFrlLssRS4gqPAeZiHao");
 
 		innlegg1.doLike();
 		innlegg1.doLike();
