@@ -5,11 +5,11 @@ import no.hvl.dat100.jplab11.oppgave1.*;
 
 public class Blogg {
 
-	int antall;
-	Innlegg[] samling;
+	private int antall;
+	private Innlegg[] samling;
 	
 	public Blogg() {
-		this(20);
+		this(20); // Setter 20 som standard lengde om annet ikke er spesifisert i konstruktøren.
 	}
 
 	public Blogg(int lengde) {
@@ -19,14 +19,7 @@ public class Blogg {
 	}
 
 	public int getAntall() {
-		int antall = 0;
-		for(int i = 0; i < samling.length; i++) {
-			if(samling[i] == null) {
-				return antall;
-			}
-			antall ++;
-		}
-		return antall;
+		return this.antall;
 	}
 	
 	public Innlegg[] getSamling() {
@@ -62,6 +55,7 @@ public class Blogg {
 			for(int i = 0; i < samling.length; i++) {
 				if(samling[i] == null) {
 					samling[i] = innlegg;
+					this.antall++;
 					return true;
 				}
 			}
@@ -91,10 +85,8 @@ public class Blogg {
 	public boolean leggTilUtvid(Innlegg innlegg) {
 
 		if(!leggTil(innlegg)) {
-			int index = samling.length;
 			utvid();
-			samling[index] = innlegg;
-			return true;
+			return leggTil(innlegg);
 		}
 		return false;
 	}
@@ -103,6 +95,7 @@ public class Blogg {
 		for(int i = 0; i < samling.length; i++) {
 			if(samling[i] != null && samling[i].equals(innlegg)) {
 				samling[i] = null;
+				this.antall--;
 				return true;
 			}
 		}

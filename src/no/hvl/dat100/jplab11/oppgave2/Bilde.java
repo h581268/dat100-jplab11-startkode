@@ -4,7 +4,7 @@ import no.hvl.dat100.jplab11.common.TODO;
 
 public class Bilde extends Tekst {
 
-	String url;
+	private String url;
 	
 	public Bilde(int id, String bruker, String dato, String tekst, String url) {
 		this(id, bruker, dato, 0, tekst, url);
