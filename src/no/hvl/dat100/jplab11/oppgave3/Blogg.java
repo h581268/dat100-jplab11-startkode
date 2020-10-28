@@ -1,5 +1,7 @@
 package no.hvl.dat100.jplab11.oppgave3;
 
+import java.util.ArrayList;
+
 import no.hvl.dat100.jplab11.common.TODO;
 import no.hvl.dat100.jplab11.oppgave1.*;
 
@@ -27,8 +29,8 @@ public class Blogg {
 	}
 	
 	public int finnInnlegg(Innlegg innlegg) {
-		for(int i = 0; i < samling.length; i++) {
-			if (samling[i] != null && samling[i].erLik(innlegg)) {
+		for(int i = 0; i < antall; i++) {
+			if (samling[i].erLik(innlegg)) {
 				return i;
 			}
 		}
@@ -45,7 +47,7 @@ public class Blogg {
 	}
 
 	public boolean ledigPlass() {
-		return samling[samling.length - 1] == null;
+		return antall < samling.length;
 
 	}
 	
@@ -102,10 +104,22 @@ public class Blogg {
 		return false;
 	}
 	
-	//TODO! Bruk toString til søk! 
+	//TODO! Skriv test!
 	public int[] search(String keyword) {
-		// Returner alle id til alle innlegg der teksten inneholder "keyword".
-		throw new UnsupportedOperationException(TODO.method());
+		ArrayList<Integer> resultatListe = new ArrayList<Integer>();
+		
+		for (Innlegg innlegg: samling) {
+			if (innlegg.toString().contains(keyword)) {
+				resultatListe.add(innlegg.getId());
+			}
+		}
+		
+		int[] resultat = new int[resultatListe.size()];
+		for (int i = 0; i < resultatListe.size(); i++) {
+			resultat[i] = resultatListe.get(i);
+		}
+		
+		return resultat;
 
 	}
 }
