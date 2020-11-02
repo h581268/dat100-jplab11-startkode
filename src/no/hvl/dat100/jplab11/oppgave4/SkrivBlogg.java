@@ -13,19 +13,13 @@ public class SkrivBlogg {
 		try {
 			PrintWriter fil = new PrintWriter(mappe + filnavn);
 
-			fil.write(String.valueOf(samling.getAntall())+ "\n");
-			for(Innlegg innlegg : samling.getSamling()) {
-				if (innlegg == null) {
-					break;
-				}
-				fil.write(innlegg.toString());
-			}
+			fil.write(samling.toString());
 			fil.close();
+			return true;
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
+			return false;
 		}
-		
-		return true;
 	}
 }
