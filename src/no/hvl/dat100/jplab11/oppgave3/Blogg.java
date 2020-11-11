@@ -2,7 +2,6 @@ package no.hvl.dat100.jplab11.oppgave3;
 
 import java.util.ArrayList;
 
-import no.hvl.dat100.jplab11.common.TODO;
 import no.hvl.dat100.jplab11.oppgave1.*;
 
 public class Blogg {
@@ -38,8 +37,8 @@ public class Blogg {
 	}
 
 	public boolean finnes(Innlegg innlegg) {
-		for(Innlegg inl : samling) {
-			if (inl != null && inl.erLik(innlegg)) {
+		for(int i = 0; i < antall; i++) {
+			if (samling[i].erLik(innlegg)) {
 				return true;
 			}
 		}
@@ -54,23 +53,17 @@ public class Blogg {
 	public boolean leggTil(Innlegg innlegg) {
 
 		if(!finnes(innlegg) && ledigPlass()) {
-			for(int i = 0; i < samling.length; i++) {
-				if(samling[i] == null) {
-					samling[i] = innlegg;
-					this.antall++;
-					return true;
-				}
-			}
+			samling[antall] = innlegg;
+			antall++;
+			return true;
 		}
 		return false;
 	}
 	
 	public String toString() {
-		String retur = String.valueOf(getAntall()) + "\n";
-		for(Innlegg innlegg : samling) {
-			if(innlegg != null) {
-				retur += innlegg.toString();
-			}
+		String retur = String.valueOf(antall) + "\n";
+		for(int i = 0; i < antall; i++) {
+			retur += samling[i].toString();
 		}
 		return retur;
 	}
@@ -82,8 +75,7 @@ public class Blogg {
 		System.arraycopy(samling, 0, nySamling, 0, samling.length);
 		this.samling = nySamling;
 	}
-	
-	//TODO! Skriv test!
+
 	public boolean leggTilUtvid(Innlegg innlegg) {
 
 		if(!leggTil(innlegg)) {
@@ -95,8 +87,9 @@ public class Blogg {
 	
 	public boolean slett(Innlegg innlegg) {
 		for(int i = 0; i < samling.length; i++) {
-			if(samling[i] != null && samling[i].equals(innlegg)) {
-				samling[i] = null;
+			if(samling[i].equals(innlegg)) {
+				samling[i] = samling[antall- 1];
+				samling[antall - 1] = null;
 				this.antall--;
 				return true;
 			}
@@ -104,7 +97,6 @@ public class Blogg {
 		return false;
 	}
 	
-	//TODO! Skriv test!
 	public int[] search(String keyword) {
 		ArrayList<Integer> resultatListe = new ArrayList<Integer>();
 		
